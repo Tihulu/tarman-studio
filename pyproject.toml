@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tarman-studio"
+version = "0.4.0"
+description = "GUI and CLI helper for installing prebuilt portable Linux tarballs"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "GPL-3.0-or-later"
+authors = [{name = "Tarman Studio Contributors"}]
+keywords = ["linux", "tar", "tarball", "installer", "gui", "qt", "pyside6", "pyenv"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+gui = ["PySide6>=6.7,<7"]
+
+[project.scripts]
+tarman = "tarman.cli:main"
+tarman-gui = "tarman.gui:main"
+
+[tool.setuptools.packages.find]
+include = ["tarman*"]
+
+[tool.setuptools.package-data]
+tarman = ["assets/*.svg"]

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Tarman Studio
+Comment=Install portable Linux tarballs
+Exec=tarman-gui
+TryExec=tarman-gui
+Icon=tarman-studio
+Terminal=false
+Categories=Utility;Qt;
+StartupNotify=true
+StartupWMClass=tarman-studio

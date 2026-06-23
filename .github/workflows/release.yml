@@ -1,0 +1,60 @@
+name: Build and release
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release-linux:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install native packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            curl file fuse libfuse2 patchelf desktop-file-utils \
+            libxcb-cursor0 libxkbcommon-x11-0 libegl1 libopengl0
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip wheel pytest
+          python -m pip install .
+
+      - name: Test core
+        run: pytest -q
+
+      - name: Build source archives
+        run: |
+          mkdir -p dist
+          VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$VERSION" = "$GITHUB_REF_NAME" ]; then VERSION="dev"; fi
+          git archive --format=tar.gz --prefix="tarman-studio-${VERSION}/" -o "dist/tarman-studio-${VERSION}.tar.gz" HEAD
+          git archive --format=zip --prefix="tarman-studio-${VERSION}/" -o "dist/tarman-studio-${VERSION}.zip" HEAD
+
+      - name: Build AppImage
+        run: ./scripts/build-appimage.sh
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: tarman-studio-linux
+          path: dist/*
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
