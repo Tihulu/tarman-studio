@@ -12,7 +12,7 @@ It is designed for people who download portable app tarballs and want a cleaner 
 - CLI command: `tarman`.
 - GUI command: `tarman-gui`.
 - pyenv-isolated install path; no conda, system Python, or `pip --user` conflicts.
-- Optional AppImage build and GitHub Release workflow.
+- Optional AppImage release package.
 - User install target: `~/.local/share/tarman/apps/<app>`.
 - Optional system install target: `/opt/<app>` using `pkexec`.
 - Creates Linux app menu launchers.
@@ -151,7 +151,7 @@ The Tarman Studio logo in `assets/` and `tarman/assets/` is original project art
 
 - pyenv: Python version isolation and installation.
 - Qt for Python / PySide6: Qt 6 GUI bindings for Python.
-- PyInstaller: used by the AppImage build script to bundle the GUI launcher.
-- AppImageKit/appimagetool: used to generate AppImage release assets.
+- PyInstaller: used by the release workflow to bundle the GUI launcher.
+- AppImageKit/appimagetool: used to generate release assets.
 - Qt `desktopFileName`: used so desktop environments can associate the running window with `tarman-studio.desktop`.
 - GNU GPL v3: project license.
