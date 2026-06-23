@@ -65,22 +65,6 @@ Use a different Python version:
 TARMAN_PYTHON_VERSION=3.12.8 ./install-pyenv.sh
 ```
 
-## Build an AppImage
-
-The AppImage build is intended for GitHub Actions and clean Ubuntu builders:
-
-```bash
-./scripts/build-appimage.sh
-```
-
-Output appears in `dist/` as:
-
-```text
-Tarman_Studio-<version>-x86_64.AppImage
-```
-
-The tag workflow in `.github/workflows/release.yml` builds the AppImage and attaches it to a GitHub Release.
-
 ## Run
 
 ```bash
