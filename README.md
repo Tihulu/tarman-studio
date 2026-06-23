@@ -21,7 +21,7 @@ It is designed for people who download portable app tarballs and want a cleaner 
 
 ## One-line install
 
-After this repository is published as `Tihulu/tarman-studio`, users can install with:
+Install with:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/Tihulu/tarman-studio/main/install-online.sh | bash
@@ -80,24 +80,6 @@ Tarman_Studio-<version>-x86_64.AppImage
 ```
 
 The tag workflow in `.github/workflows/release.yml` builds the AppImage and attaches it to a GitHub Release.
-
-## Publish to GitHub
-
-Create the repository and push:
-
-```bash
-gh auth login
-gh repo create Tihulu/tarman-studio --public --source=. --remote=origin --push
-```
-
-Then create a release tag:
-
-```bash
-git tag v0.4.0
-git push origin v0.4.0
-```
-
-The GitHub Actions workflow will build and attach the source archives and AppImage.
 
 ## Run
 
