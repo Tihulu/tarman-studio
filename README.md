@@ -143,9 +143,9 @@ This is intentional: a `.tar.gz` can contain anything from a prebuilt app to sou
 
 ## License
 
-GPL-3.0-or-later. See [LICENSE](LICENSE).
+GNU Affero General Public License v3.0 (AGPLv3). See [LICENSE](LICENSE).
 
-The Tarman Studio logo in `assets/` and `tarman/assets/` is original project artwork and is distributed under the same GPL-3.0-or-later license as the application.
+The Tarman Studio logo in `assets/` and `tarman/assets/` is original project artwork and is distributed under the same GNU Affero General Public License v3.0 (AGPLv3) license as the application.
 
 ## Upstream technologies and references
 
@@ -154,4 +154,4 @@ The Tarman Studio logo in `assets/` and `tarman/assets/` is original project art
 - PyInstaller: used by the release workflow to bundle the GUI launcher.
 - AppImageKit/appimagetool: used to generate release assets.
 - Qt `desktopFileName`: used so desktop environments can associate the running window with `tarman-studio.desktop`.
-- GNU GPL v3: project license.
+- GNU AGPLv3: project license.
